@@ -153,7 +153,36 @@ public class Member {
         this.myType = myType;
         this.myTypeB = myTypeB;
     }
-
+    public void access(){
+        try {
+            Connection con = null;
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/primejavajwc",
+                    "root", "bitnami");
+            java.sql.Statement st = null;
+            ResultSet rs = null;
+            st = con.createStatement();
+            if (st.execute("SELECT * FROM memberinfo")) {
+                rs = st.getResultSet();
+            }
+            while (rs.next()) {
+                setPid(rs.getInt("pid"));
+                setId(rs.getString("id"));
+                setPw(rs.getString("pw"));
+                setName(rs.getString("name"));
+                setGender(rs.getString("gender"));
+                setRegion(rs.getString("region"));
+                setPhone(rs.getInt("phone"));
+                setIntro(rs.getString("intro"));
+                setBloodT(rs.getString("bloodT"));
+                setMyType(rs.getString("myType"));
+                setMyTypeB(rs.getString("myTypeB"));
+                setProfilecheck(rs.getInt("profilecheck"));
+                System.out.println(toString());
+            }
+        } catch (SQLException sqex) {
+            System.out.println("dfsd");
+        }
+    }
     public Member(String intro, String myType, String myTypeB) {
         this.intro = intro;
         this.myType = myType;
