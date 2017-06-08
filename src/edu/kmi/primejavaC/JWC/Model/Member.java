@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * Created by JINU on 2017. 6. 8..
  */
-public class MemberDataAccess {
+public class Member {
 
     private static Connection con;
     private static Statement stmt;
@@ -137,11 +137,11 @@ public class MemberDataAccess {
         this.profilecheck = profilecheck;
     }
 
-    public MemberDataAccess(){
+    public Member(){
 
     }
 
-    public MemberDataAccess(String id, String pw, String name, String gender, String region, Integer phone, String intro, String bloodT, String myType, String myTypeB) {
+    public Member(String id, String pw, String name, String gender, String region, Integer phone, String intro, String bloodT, String myType, String myTypeB) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -154,34 +154,11 @@ public class MemberDataAccess {
         this.myTypeB = myTypeB;
     }
 
-    public void access(){
-        try {
-            Connection con = null;
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/primejavaJWC",
-                    "root", "bitnami");
-            java.sql.Statement st = null;
-            ResultSet rs = null;
-            st = con.createStatement();
-            if (st.execute("SELECT * FROM memberinfo")) {
-                rs = st.getResultSet();
-            }
-            while (rs.next()) {
-                setPid(rs.getInt("pid"));
-                setId(rs.getString("id"));
-                setPw(rs.getString("pw"));
-                setName(rs.getString("name"));
-                setGender(rs.getString("gender"));
-                setRegion(rs.getString("region"));
-                setPhone(rs.getInt("phone"));
-                setIntro(rs.getString("intro"));
-                setBloodT(rs.getString("bloodT"));
-                setMyType(rs.getString("myType"));
-                setMyTypeB(rs.getString("myTypeB"));
-                setProfilecheck(rs.getInt("profilecheck"));
-                System.out.println(toString());
-            }
-        } catch (SQLException sqex) {
-            System.out.println("양혜림때리고싶다");
-        }
+    public Member(String intro, String myType, String myTypeB) {
+        this.intro = intro;
+        this.myType = myType;
+        this.myTypeB = myTypeB;
     }
+
+
 }

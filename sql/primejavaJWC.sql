@@ -4,23 +4,23 @@ use primejavaJWC;
 
 CREATE TABLE memberinfo(
   pid INT NOT NULL AUTO_INCREMENT ,
-  id VARCHAR(20) NOT NULL ,
+  id VARCHAR(20) NOT NULL UNIQUE ,
   pw VARCHAR(20) NOT NULL ,
-  name VARCHAR(10) NOT NULL ,
-  age INT(2) NOT NULL ,
-  gender ENUM('남자','여자') NOT NULL ,
-  region ENUM('서울','경기도','강원도','충청도','경상도','전라도','제주도') NOT NULL ,
-  phone INT(12) NOT NULL ,
-  intro TEXT(300) NOT NULL ,
-  bloodT ENUM('A','B','O','AB') NOT NULL ,
-  myType VARCHAR(15) NOT NULL ,
-  myTypeB ENUM('A','B','O','AB') NOT NULL,
+  name VARCHAR(10)  ,
+  age INT(2)  ,
+  gender ENUM('남자','여자')  ,
+  region ENUM('서울','경기도','강원도','충청도','경상도','전라도','제주도')  ,
+  phone INT(20)  ,
+  intro TEXT(300)  ,
+  bloodT ENUM('A','B','O','AB')  ,
+  myType VARCHAR(15)  ,
+  myTypeB ENUM('A','B','O','AB') ,
   profilecheck INT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO memberinfo (id, pw, name, age, gender, region, phone, intro, bloodT, myType, myTypeB, profilecheck)
-    VALUES ('test','test','test',25,'남자','서울',01088387684,'안녕반가워요사랑해요','B','귀여움','B',0);
+INSERT INTO memberinfo (id, pw, name, age, gender, region, phone, intro, bloodT, myType, myTypeB)
+    VALUES ('test','test','test',25,'남자','서울',01088387684,'안녕반가워요사랑해요','B','귀여움','B');
 
 CREATE TABLE memoservice(
   pid INT NOT NULL AUTO_INCREMENT,
@@ -32,4 +32,10 @@ CREATE TABLE memoservice(
   PRIMARY KEY (pid)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE primejavaJWC.memberinfo
+DROP TABLE primejavaJWC.memberinfo;
+
+INSERT INTO memberinfo (id,pw) VALUES ('tdest','teststs');
+
+UPDATE memberinfo SET name = '' , age = '12' , gender = '남자' , region = '서울' , phone = '123' , intro = '' , bloodT = 'B' , myType = '' , myTypeB = 'B' WHERE id = 'test1';
+
+SELECT * FROM memberinfo WHERE id = "test";
