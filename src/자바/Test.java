@@ -7,6 +7,7 @@ public class Test {
 		System.out.println("테스트ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇ랑ㄴ리ㅏㅣㅇasdasdasdasdㅁㄴㅇㅁㄴ입니다.");
 		System.out.println("방금 수정함");
 		System.out.println("asdasd");
+		System.out.println("asdasdasd");
 		System.out.println("한 번더");
 	}
 }
