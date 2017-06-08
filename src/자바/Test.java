@@ -7,7 +7,7 @@ public class Test {
 		System.out.println("테스트ㄴㅇㄹㄴㅇㄹㄴㅇㄹㄴㅇ랑ㄴ리ㅏㅣㅇasdasdasdasdㅁㄴㅇㅁㄴ입니다.");
 		System.out.println("불라불라");
 		System.out.println("불라불라");
-		System.out.println("불라불라");
+		System.out.println("불라불ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴ라");
 
 	}
 
