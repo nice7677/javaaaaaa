@@ -157,7 +157,7 @@ public class MemberDataAccess {
     public void access(){
         try {
             Connection con = null;
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/primejavaJWC",
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/primejavajwc",
                     "root", "bitnami");
             java.sql.Statement st = null;
             ResultSet rs = null;
