@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
@@ -12,8 +13,6 @@ import java.awt.Container;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
-import com.sun.glass.events.KeyEvent;
 
 import edu.kmi.primejavaC.JWC.View.Thread.LabelFlicker;
 
@@ -85,9 +84,8 @@ public class Intro_Form extends JFrame{
 		@Override
 		public void keyPressed(java.awt.event.KeyEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println("key");
-			/*dispose();
-			Login_Form Login = new Login_Form();*/
+			dispose();
+			Login_Form Login = new Login_Form();
 		}
 
 		@Override

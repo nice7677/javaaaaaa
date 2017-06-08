@@ -153,8 +153,6 @@ public class Member {
         this.myType = myType;
         this.myTypeB = myTypeB;
     }
-
-<<<<<<< HEAD:src/edu/kmi/primejavaC/JWC/Model/MemberDataAccess.java
     public void access(){
         try {
             Connection con = null;
@@ -182,14 +180,13 @@ public class Member {
                 System.out.println(toString());
             }
         } catch (SQLException sqex) {
-            System.out.println("양혜림때리고싶다");
+            System.out.println("dfsd");
         }
-=======
+    }
     public Member(String intro, String myType, String myTypeB) {
         this.intro = intro;
         this.myType = myType;
         this.myTypeB = myTypeB;
->>>>>>> origin/master:src/edu/kmi/primejavaC/JWC/Model/Member.java
     }
 
 
