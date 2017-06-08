@@ -21,7 +21,7 @@ public class LabelFlicker implements Runnable {
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Flicker 종료.");
 		}
 	}
 

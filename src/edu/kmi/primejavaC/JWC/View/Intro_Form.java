@@ -52,7 +52,7 @@ public class Intro_Form extends JFrame{
 		
 		
 		JLabel lblCreator = new JLabel("Created By 이진우, 윤 철");
-		lblCreator.setFont(new Font("굴림", Font.PLAIN, 20));
+		lblCreator.setFont(new Font("굴림", Font.BOLD, 20));
 		lblCreator.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCreator.setBounds(683, 659, 309, 50);
 		getContentPane().add(lblCreator);
@@ -60,7 +60,7 @@ public class Intro_Form extends JFrame{
 		
 		//----------키 이벤트 구현 부분 (아무 키나 입력받으면 Login_Form 으로 넘어감)-------
 		this.requestFocus();
-		this.addKeyListener(new AnyKeyListener());
+		this.addKeyListener(new AnyKeyListener(RunFlick));		//내부 이벤트 클래스로 작성
 	}
 
 	/**
@@ -80,10 +80,14 @@ public class Intro_Form extends JFrame{
 	}
 	
 	class AnyKeyListener implements KeyListener{
-
+		Thread thd;
+		public AnyKeyListener(Thread thd){
+			this.thd = thd;
+		}
 		@Override
 		public void keyPressed(java.awt.event.KeyEvent e) {
 			// TODO Auto-generated method stub
+			thd.interrupt();
 			dispose();
 			Login_Form Login = new Login_Form();
 		}
