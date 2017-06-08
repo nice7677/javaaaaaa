@@ -19,6 +19,7 @@ public class Login_Form {
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
+					System.out.println("Asdasd");
 				}
 			}
 		});
