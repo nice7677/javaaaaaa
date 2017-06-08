@@ -5,7 +5,7 @@ import java.sql.*;
 /**
  * Created by JINU on 2017. 6. 8..
  */
-public class MemberDataAccess {
+public class Member {
 
     private static Connection con;
     private static Statement stmt;
@@ -137,11 +137,11 @@ public class MemberDataAccess {
         this.profilecheck = profilecheck;
     }
 
-    public MemberDataAccess(){
+    public Member(){
 
     }
 
-    public MemberDataAccess(String id, String pw, String name, String gender, String region, Integer phone, String intro, String bloodT, String myType, String myTypeB) {
+    public Member(String id, String pw, String name, String gender, String region, Integer phone, String intro, String bloodT, String myType, String myTypeB) {
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -154,6 +154,7 @@ public class MemberDataAccess {
         this.myTypeB = myTypeB;
     }
 
+<<<<<<< HEAD:src/edu/kmi/primejavaC/JWC/Model/MemberDataAccess.java
     public void access(){
         try {
             Connection con = null;
@@ -183,5 +184,13 @@ public class MemberDataAccess {
         } catch (SQLException sqex) {
             System.out.println("양혜림때리고싶다");
         }
+=======
+    public Member(String intro, String myType, String myTypeB) {
+        this.intro = intro;
+        this.myType = myType;
+        this.myTypeB = myTypeB;
+>>>>>>> origin/master:src/edu/kmi/primejavaC/JWC/Model/Member.java
     }
+
+
 }
