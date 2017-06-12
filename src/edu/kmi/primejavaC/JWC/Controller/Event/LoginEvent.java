@@ -14,18 +14,26 @@ public class LoginEvent implements ActionListener {
 	String id;
 	String pw;
 	Login_Form frame;
-	public LoginEvent(Login_Form frame, String id, char[] pw){
-		this.id = id;
-		this.pw = new String(pw, 0, pw.length);
+	Member info;
+	public LoginEvent(Login_Form frame){
 		this.frame = frame;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		frame.getControl().open();
-		frame.getControl().loginCheck(id, pw);
-		frame.getControl().close();
+		String[] account = frame.get_Account();
+		this.id = account[0];
+		this.pw = account[1];
 		
+		frame.getControl().open();
+		try {
+			info = frame.getControl().checkUser(id, pw);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		frame.getControl().close();
+		System.out.println(info.getPw());
 		/*if(member.getProfilecheck() == 1){
 			frame.dispose();
 			Main_Form main_frame = new Main_Form(frame.getControl(), info);

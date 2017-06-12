@@ -81,7 +81,7 @@ public class Login_Form extends Parent_Form{
 		//--------------컴포넌트 구성 end--------------------------------
 		
 		//-------------------이벤트 등록--------------------------------
-		btnLogin.addActionListener(new LoginEvent(this, txtId.getText(), txtPw.getPassword()));
+		btnLogin.addActionListener(new LoginEvent(this));
 		
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,5 +91,9 @@ public class Login_Form extends Parent_Form{
 		
 		//-------------------이벤트 등록 end-----------------------------
 		
+	}
+	public String[] get_Account(){
+		String[] account = {txtId.getText(), new String(txtPw.getPassword(), 0, txtPw.getPassword().length)};
+		return account;
 	}
 }
