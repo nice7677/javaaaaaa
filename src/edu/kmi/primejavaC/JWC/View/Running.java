@@ -9,7 +9,6 @@ import edu.kmi.primejavaC.JWC.View.Form.Intro_Form;
 public class Running {
 	public static void main(String[] args) {
 		FrontController control = new FrontController();
-		//Intro_Form run = new Intro_Form(control);
-		Insert_Profile_Form fd = new Insert_Profile_Form(control);
+		Intro_Form run = new Intro_Form(control);
 	}
 }

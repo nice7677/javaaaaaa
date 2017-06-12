@@ -5,21 +5,34 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import edu.kmi.primejavaC.JWC.Controller.FrontController;
+import edu.kmi.primejavaC.JWC.Model.Member;
+import edu.kmi.primejavaC.JWC.View.Form.Insert_Profile_Form;
 import edu.kmi.primejavaC.JWC.View.Form.Login_Form;
+import edu.kmi.primejavaC.JWC.View.Form.Main_Form;
 
 public class LoginEvent implements ActionListener {
 	String id;
 	String pw;
 	Login_Form frame;
-	public LoginEvent(Login_Form control, String id, char[] pw){
+	public LoginEvent(Login_Form frame, String id, char[] pw){
 		this.id = id;
 		this.pw = new String(pw, 0, pw.length);
-		this.frame = control;
+		this.frame = frame;
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		frame.getControl().open();
+		frame.getControl().loginCheck(id, pw);
+		frame.getControl().close();
 		
+		/*if(member.getProfilecheck() == 1){
+			frame.dispose();
+			Main_Form main_frame = new Main_Form(frame.getControl(), info);
+		}
+		else{
+			Insert_Profile_Form insert_form = new Insert_Profile_Form(frame.getControl());
+		}*/
 	}
 
 }

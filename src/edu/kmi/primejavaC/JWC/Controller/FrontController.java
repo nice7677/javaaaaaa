@@ -131,6 +131,7 @@ public class FrontController {
 			con.close();
 			st = null;
 			rs = null;
+			System.out.println("연결 종료");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

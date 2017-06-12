@@ -16,10 +16,12 @@ import javax.swing.JRadioButton;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.AbstractListModel;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.DropMode;
 
 public class Insert_Profile_Form extends Parent_Form {
 	private JTextField txtName;
@@ -104,22 +106,23 @@ public class Insert_Profile_Form extends Parent_Form {
 		
 		txtName = new JTextField();
 		txtName.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		txtName.setBounds(285, 112, 116, 24);
+		txtName.setBounds(285, 112, 116, 31);
 		insert_profile_panel.add(txtName);
 		txtName.setColumns(10);
 		
 		txtAge = new JTextField();
 		txtAge.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		txtAge.setColumns(10);
-		txtAge.setBounds(285, 168, 116, 24);
+		txtAge.setBounds(285, 168, 116, 31);
 		insert_profile_panel.add(txtAge);
 		
 		txtPhone = new JTextField();
 		txtPhone.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		txtPhone.setColumns(20);
-		txtPhone.setBounds(268, 350, 145, 24);
+		txtPhone.setBounds(268, 350, 145, 31);
 		insert_profile_panel.add(txtPhone);
 		
+		ButtonGroup group = new ButtonGroup();
 		JRadioButton rdoMale = new JRadioButton("Male");
 		rdoMale.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		rdoMale.setBounds(268, 226, 72, 27);
@@ -129,6 +132,9 @@ public class Insert_Profile_Form extends Parent_Form {
 		rdoFemale.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		rdoFemale.setBounds(346, 226, 89, 27);
 		insert_profile_panel.add(rdoFemale);
+		
+		group.add(rdoMale);
+		group.add(rdoFemale);
 		
 		JComboBox choRegion = new JComboBox();
 		choRegion.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
@@ -161,7 +167,7 @@ public class Insert_Profile_Form extends Parent_Form {
 		
 		txtCharacter = new JTextField();
 		txtCharacter.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		txtCharacter.setBounds(285, 479, 116, 24);
+		txtCharacter.setBounds(285, 479, 116, 31);
 		insert_profile_panel.add(txtCharacter);
 		txtCharacter.setColumns(10);
 		
@@ -170,7 +176,6 @@ public class Insert_Profile_Form extends Parent_Form {
 		btnInsert.setBounds(213, 703, 105, 27);
 		insert_profile_panel.add(btnInsert);
 		//------------------컴포넌트 구성 End-----------------------------
-		
 
 	}
 }
