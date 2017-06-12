@@ -24,9 +24,7 @@ import javax.swing.JButton;
 public class Insert_Profile_Form extends Parent_Form {
 	private JTextField txtName;
 	private JTextField txtAge;
-	private JTextField txtNum_1;
-	private JTextField txtNum_2;
-	private JTextField txtNum_3;
+	private JTextField txtPhone;
 	private JTextField txtCharacter;
 
 
@@ -116,23 +114,11 @@ public class Insert_Profile_Form extends Parent_Form {
 		txtAge.setBounds(285, 168, 116, 24);
 		insert_profile_panel.add(txtAge);
 		
-		txtNum_1 = new JTextField();
-		txtNum_1.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		txtNum_1.setColumns(10);
-		txtNum_1.setBounds(222, 350, 72, 24);
-		insert_profile_panel.add(txtNum_1);
-		
-		txtNum_2 = new JTextField();
-		txtNum_2.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		txtNum_2.setColumns(10);
-		txtNum_2.setBounds(308, 350, 72, 24);
-		insert_profile_panel.add(txtNum_2);
-		
-		txtNum_3 = new JTextField();
-		txtNum_3.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		txtNum_3.setColumns(10);
-		txtNum_3.setBounds(391, 350, 72, 24);
-		insert_profile_panel.add(txtNum_3);
+		txtPhone = new JTextField();
+		txtPhone.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		txtPhone.setColumns(20);
+		txtPhone.setBounds(268, 350, 145, 24);
+		insert_profile_panel.add(txtPhone);
 		
 		JRadioButton rdoMale = new JRadioButton("Male");
 		rdoMale.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
