@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import edu.kmi.primejavaC.JWC.Controller.FrontController;
+import edu.kmi.primejavaC.JWC.Controller.Event.ProfileInsertEvent;
+import edu.kmi.primejavaC.JWC.Model.Member;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -22,20 +25,30 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.DropMode;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
 
 public class Insert_Profile_Form extends Parent_Form {
 	private JTextField txtName;
 	private JTextField txtAge;
 	private JTextField txtPhone;
 	private JTextField txtCharacter;
-
+	private JTextArea txtIntroduce;
+	JRadioButton rdoMale;
+	JRadioButton rdoFemale;
+	
+	Member account;
 
 	/**
 	 * Create the frame.
 	 */
-	public Insert_Profile_Form(FrontController control) {
+	public Insert_Profile_Form(FrontController control, Member account) {
 		super(550, 800, control);
 		setTitle("InsertProfilePage");
+		
+		this.account = account;
 		
 		//------------컴포넌트 구성------------------------
 		getContentPane().setLayout(new BorderLayout(0, 0));
@@ -123,12 +136,12 @@ public class Insert_Profile_Form extends Parent_Form {
 		insert_profile_panel.add(txtPhone);
 		
 		ButtonGroup group = new ButtonGroup();
-		JRadioButton rdoMale = new JRadioButton("Male");
+		rdoMale = new JRadioButton("Male");
 		rdoMale.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		rdoMale.setBounds(268, 226, 72, 27);
 		insert_profile_panel.add(rdoMale);
 		
-		JRadioButton rdoFemale = new JRadioButton("Female");
+		rdoFemale = new JRadioButton("Female");
 		rdoFemale.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		rdoFemale.setBounds(346, 226, 89, 27);
 		insert_profile_panel.add(rdoFemale);
@@ -136,13 +149,14 @@ public class Insert_Profile_Form extends Parent_Form {
 		group.add(rdoMale);
 		group.add(rdoFemale);
 		
-		JComboBox choRegion = new JComboBox();
-		choRegion.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
-		choRegion.setMaximumRowCount(7);
-		choRegion.setModel(new DefaultComboBoxModel(new String[] {"서울", "경기도", "강원도", "충청도", "경상도", "전라도", "제주도"}));
-		choRegion.setSelectedIndex(0);
-		choRegion.setBounds(268, 284, 145, 31);
-		insert_profile_panel.add(choRegion);
+		JComboBox cboRegion = new JComboBox();
+		cboRegion.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
+		cboRegion.setMaximumRowCount(7);
+		cboRegion.setModel(new DefaultComboBoxModel(new String[] {"서울", "경기도", "강원도", "충청도", "경상도", "전라도", "제주도"}));
+		cboRegion.setSelectedIndex(0);
+		cboRegion.setBounds(268, 284, 145, 31);
+		insert_profile_panel.add(cboRegion);
+		account.setRegion(cboRegion.getSelectedItem().toString());
 		
 		JComboBox cboBloodType = new JComboBox();
 		cboBloodType.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "O", "AB"}));
@@ -151,6 +165,7 @@ public class Insert_Profile_Form extends Parent_Form {
 		cboBloodType.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		cboBloodType.setBounds(268, 408, 145, 31);
 		insert_profile_panel.add(cboBloodType);
+		account.setBloodT(cboBloodType.getSelectedItem().toString());
 		
 		JComboBox cboIdeal_BloodType = new JComboBox();
 		cboIdeal_BloodType.setModel(new DefaultComboBoxModel(new String[] {"A", "B", "O", "AB"}));
@@ -159,8 +174,9 @@ public class Insert_Profile_Form extends Parent_Form {
 		cboIdeal_BloodType.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		cboIdeal_BloodType.setBounds(268, 547, 145, 31);
 		insert_profile_panel.add(cboIdeal_BloodType);
+		account.setMyTypeB(cboIdeal_BloodType.getSelectedItem().toString());
 		
-		JTextArea txtIntroduce = new JTextArea();
+		txtIntroduce = new JTextArea();
 		txtIntroduce.setFont(new Font("맑은 고딕", Font.PLAIN, 16));
 		txtIntroduce.setBounds(222, 610, 248, 70);
 		insert_profile_panel.add(txtIntroduce);
@@ -176,6 +192,83 @@ public class Insert_Profile_Form extends Parent_Form {
 		btnInsert.setBounds(213, 703, 105, 27);
 		insert_profile_panel.add(btnInsert);
 		//------------------컴포넌트 구성 End-----------------------------
+		
+		//------------------이벤트 등록=--------------------------------
+		rdoMale.addItemListener(new RadioListener());
+		rdoFemale.addItemListener(new RadioListener());
+		
+			//지역 선택 콤보박스 이벤트
+		cboRegion.addActionListener(new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JComboBox ch = (JComboBox) e.getSource();
+				account.setRegion(ch.getSelectedItem().toString());
+			}
+		});
+		
+			//자신의 혈액형 선택 콤보박스 이벤트
+		cboBloodType.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JComboBox ch = (JComboBox) e.getSource();
+				account.setRegion(ch.getSelectedItem().toString());
+			}
+		});
+			//상대방 혈액형 선택 콤보박스 이벤트
+		cboIdeal_BloodType.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				JComboBox ch = (JComboBox) e.getSource();
+				account.setRegion(ch.getSelectedItem().toString());
+			}
+		});
+		
+			//입력 버튼 이벤트
+		btnInsert.addActionListener(new ProfileInsertEvent(this));
+		
+	}
+	
+	// 프로필을 모두 입력했는지 확인하는 함수
+	public boolean insert_Check(){
+		if(txtName.getText().length() == 0 || txtAge.getText().length() == 0 ||
+				txtPhone.getText().length() == 0 || txtIntroduce.getText().length() == 0 ||
+				txtCharacter.getText().length() == 0){
+			return false;
+		}
+		else
+			return true;
+	}
+	
+	// 입력한 프로필을 Bean에 담아 리턴하는 함수
+	public Member insert_Profile(){
+		account.setName(txtName.getText());
+		account.setAge(Integer.parseInt(txtAge.getText()));
+		account.setPhone(Integer.parseInt(txtPhone.getText()));
+		account.setIntro(txtIntroduce.getText());
+		account.setMyType(txtCharacter.getText());
+		
+		return account;
+	}
+	
+	//성별 라디오 버튼 아이템 리스너 클래스
+	class RadioListener implements ItemListener{
+
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+			if(rdoMale.isSelected()){
+				account.setGender("남자");
+			}
+			else if(rdoFemale.isSelected()){
+				account.setGender("여자");
+			}
+		}
+		
 	}
 }

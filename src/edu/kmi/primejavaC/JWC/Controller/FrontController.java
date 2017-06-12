@@ -22,7 +22,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "wlsdn123";
+    private static final String PW = "bitnami";
 
     public FrontController(){
         mb = new Member();
@@ -122,9 +122,9 @@ public class FrontController {
         try {
             int profileCheck = st.executeUpdate(MEMBER_PROFILE);
             if (profileCheck == 0){
-                System.out.println("입력이안됬어요");
+                System.out.println("입력이 안 됐어요");
             }else{
-                System.out.println("잘됬어요");
+                System.out.println("잘 됐어요");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,28 +163,29 @@ public class FrontController {
         }
     }
     
-    public Member typelist(String gender, String blood, String region) throws SQLException{
-    	Member info = new Member();
-		Map<Integer, Object> list = new HashMap<>();
+    public Map typelist(String gender, String blood, String region) throws SQLException{
+    	
+		Map<Integer, Member> list = new HashMap<Integer, Member>();
     	final String TYPE_LIST = "select * from memberinfo WHERE gender = '" + gender +"' AND bloodT = '" + blood +"' AND region = '" + region +"' order by rand() limit 5";
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(TYPE_LIST);
         rs = pstmt.executeQuery();
         int count = 0;
         while(rs.next()){
+        	Member info = new Member();
         	info.setPid(rs.getInt("pid"));
         	info.setName(rs.getString("name"));
         	info.setAge(rs.getInt("age"));
         	info.setGender(rs.getString("gender"));
         	info.setRegion(rs.getString("region"));
         	info.setIntro(rs.getString("intro"));
-        	list.put(count, info.typelist());
+        	list.put(count, info);
         	count++;
         }
         for (int i = 0; i < 5; i++){
         	System.out.println(list.get(i));
         }
-    	return info;
+    	return list;
     }
     
     public void close(){

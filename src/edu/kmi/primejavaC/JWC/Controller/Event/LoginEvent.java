@@ -44,7 +44,8 @@ public class LoginEvent implements ActionListener {
 				Main_Form main_frame = new Main_Form(frame.getControl(), info);
 			}
 			else{
-				Insert_Profile_Form insert_form = new Insert_Profile_Form(frame.getControl());
+				frame.dispose();
+				Insert_Profile_Form insert_form = new Insert_Profile_Form(frame.getControl(), info);
 			}
 		}
 		else{
