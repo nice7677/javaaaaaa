@@ -141,7 +141,7 @@ public class FrontController {
         	info.setProfilecheck(rs.getInt("profilecheck"));
         }
     	if ( info.getPw().equals(pw)){
-    		if ( info.getProfilecheck() == 1){
+    		if ( info.getProfilecheck() == 0){
     			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
     		}
     		System.out.println("굿");
