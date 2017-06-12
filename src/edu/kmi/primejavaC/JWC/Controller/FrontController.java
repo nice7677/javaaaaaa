@@ -17,7 +17,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "bitnami";
+    private static final String PW = "wlsdn123";
 
     public FrontController(){
         mb = new Member();
@@ -124,6 +124,30 @@ public class FrontController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public boolean checkUser(String id, String pw) throws SQLException{
+    	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
+    	PreparedStatement pstmt;
+        int cnt = 0;
+        pstmt = con.prepareStatement(MEMBER_LOGIN);
+        rs = pstmt.executeQuery();
+        String test = null;
+        while(rs.next()){
+        	mb.setPw(rs.getString("pw"));
+        }
+    	if ( mb.getPw().equals(pw)){
+    		
+    		
+    		System.out.println("굿");
+    		return true;
+    		
+    	}else{
+    		
+    		
+    		System.out.println("망함");
+    		return false;
+    	}
     }
     
     public void close(){
