@@ -1,4 +1,4 @@
-package edu.kmi.primejavaC.JWC.View;
+package edu.kmi.primejavaC.JWC.View.Form;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -10,7 +10,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import edu.kmi.primejavaC.JWC.Controller.MemberDao;
+import edu.kmi.primejavaC.JWC.Controller.FrontController;
+import edu.kmi.primejavaC.JWC.Controller.DAO.MemberDao;
 import edu.kmi.primejavaC.JWC.Controller.Event.LoginEvent;
 
 import java.awt.GridLayout;
@@ -24,17 +25,17 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Login_Form extends JFrame{
+public class Login_Form extends Parent_Form{
 	private JTextField txtId;
 	private JPasswordField txtPw;
 
 	/**
 	 * Create the application.
 	 */
-	public Login_Form() {
-		initialize();
-		
+	public Login_Form(FrontController control) {
+		super(1024, 768, control);
 		setBackground(new Color(255, 255, 255));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Login");
 		
 		//------------컴포넌트 구성------------------
@@ -85,27 +86,11 @@ public class Login_Form extends JFrame{
 		
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SignUp_Form sign_up = new SignUp_Form();
+				SignUp_Form sign_up = new SignUp_Form(getControl());
 			}
 		});
 		
 		//-------------------이벤트 등록 end-----------------------------
 		
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		Dimension screen =Toolkit.getDefaultToolkit().getScreenSize();	//현재 모니터의 크기를 구하는 객체
-		
-		setSize(1024, 768);
-		Dimension frameSize = super.getSize();	//현재 프레임의 크기를 구함
-		
-		//모니터의 크기에 상관없이 프레임이 항상 화면의 중앙에 오도록 함
-		setLocation((screen.width - frameSize.width) / 2, (screen.height - frameSize.height) / 2);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 	}
 }

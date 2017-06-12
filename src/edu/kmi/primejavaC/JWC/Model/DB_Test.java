@@ -2,7 +2,7 @@ package edu.kmi.primejavaC.JWC.Model;
 
 import java.sql.SQLException;
 
-import edu.kmi.primejavaC.JWC.Controller.MemberDao;
+import edu.kmi.primejavaC.JWC.Controller.DAO.MemberDao;
 
 /**
  * Created by JINU on 2017. 6. 8..

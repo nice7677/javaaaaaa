@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import edu.kmi.primejavaC.JWC.Controller.MemberDao;
+import edu.kmi.primejavaC.JWC.Controller.DAO.MemberDao;
 
 public class LoginEvent implements ActionListener {
 	String id;

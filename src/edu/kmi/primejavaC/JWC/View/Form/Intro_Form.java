@@ -1,4 +1,4 @@
-package edu.kmi.primejavaC.JWC.View;
+package edu.kmi.primejavaC.JWC.View.Form;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,9 +14,10 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import edu.kmi.primejavaC.JWC.Controller.FrontController;
 import edu.kmi.primejavaC.JWC.View.Thread.LabelFlicker;
 
-public class Intro_Form extends JFrame{
+public class Intro_Form extends Parent_Form{
 	/**
 	 * Launch the application.
 	 */
@@ -25,10 +26,11 @@ public class Intro_Form extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public Intro_Form() {
+	public Intro_Form(FrontController control) {
+		super(1024, 768, control);
 		setTitle("My_Ideal_Type");
 		getContentPane().setLayout(null);
-		initialize();		// 폼의 크키와 위치를 초기화
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//------------인트로 타이틀-------------------
 		JLabel lblTitle = new JLabel("나의 이상형 찾기");
@@ -62,22 +64,6 @@ public class Intro_Form extends JFrame{
 		this.requestFocus();
 		this.addKeyListener(new AnyKeyListener(RunFlick));		//내부 이벤트 클래스로 작성
 	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		Dimension screen =Toolkit.getDefaultToolkit().getScreenSize();	//현재 모니터의 크기를 구하는 객체
-		
-		setSize(1024, 768);
-		Dimension frameSize = super.getSize();	//현재 프레임의 크기를 구함
-		
-		//모니터의 크기에 상관없이 프레임이 항상 화면의 중앙에 오도록 함
-		setLocation((screen.width - frameSize.width) / 2, (screen.height - frameSize.height) / 2);
-		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-	}
 	
 	class AnyKeyListener implements KeyListener{
 		Thread thd;
@@ -89,7 +75,7 @@ public class Intro_Form extends JFrame{
 			// TODO Auto-generated method stub
 			thd.interrupt();
 			dispose();
-			Login_Form Login = new Login_Form();
+			Login_Form Login = new Login_Form(getControl());
 		}
 
 		@Override

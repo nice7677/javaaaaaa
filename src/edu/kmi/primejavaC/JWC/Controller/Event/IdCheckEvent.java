@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+import edu.kmi.primejavaC.JWC.View.Form.Parent_Form;
+
 public class IdCheckEvent implements ActionListener {
 	String id;
 	JFrame frame;
 	
-	public IdCheckEvent(JFrame frame){
+	public IdCheckEvent(Parent_Form frame){
 		this.frame = frame;
 	}
 	public void setId(String id) {

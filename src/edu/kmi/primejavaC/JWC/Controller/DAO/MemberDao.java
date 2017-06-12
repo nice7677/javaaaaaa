@@ -1,4 +1,4 @@
-package edu.kmi.primejavaC.JWC.Controller;
+package edu.kmi.primejavaC.JWC.Controller.DAO;
 
 import javax.swing.*;
 

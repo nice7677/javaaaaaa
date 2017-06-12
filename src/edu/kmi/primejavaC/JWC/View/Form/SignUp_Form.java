@@ -1,4 +1,4 @@
-package edu.kmi.primejavaC.JWC.View;
+package edu.kmi.primejavaC.JWC.View.Form;
 
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -22,6 +22,7 @@ import javax.swing.UIManager;
 
 import com.sun.glass.events.WindowEvent;
 
+import edu.kmi.primejavaC.JWC.Controller.FrontController;
 import edu.kmi.primejavaC.JWC.Controller.Event.IdCheckEvent;
 
 import java.awt.event.ActionListener;
@@ -30,7 +31,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class SignUp_Form extends JFrame{
+public class SignUp_Form extends Parent_Form{
 	private JTextField txtId;
 	private JPasswordField txtPwd;
 	private JPasswordField txtPwd_chk;
@@ -39,9 +40,9 @@ public class SignUp_Form extends JFrame{
 	/**
 	 * Create the application.
 	 */
-	public SignUp_Form() {
+	public SignUp_Form(FrontController control) {
+		super(550, 400, control);
 		setTitle("SignUpPage");
-		initialize();
 		Id_chk = false;
 		Pw_chk = false;
 		
@@ -198,21 +199,5 @@ public class SignUp_Form extends JFrame{
 		});
 		
 		//--------------이벤트 등록 end----------------------
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		Dimension screen =Toolkit.getDefaultToolkit().getScreenSize();	//현재 모니터의 크기를 구하는 객체
-		
-		setSize(538, 353);
-		Dimension frameSize = super.getSize();	//현재 프레임의 크기를 구함
-		
-		//모니터의 크기에 상관없이 프레임이 항상 화면의 중앙에 오도록 함
-		setLocation((screen.width - frameSize.width) / 2, (screen.height - frameSize.height) / 2);
-		
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
 	}
 }
