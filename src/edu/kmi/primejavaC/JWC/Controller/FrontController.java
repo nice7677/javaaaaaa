@@ -1,8 +1,10 @@
 package edu.kmi.primejavaC.JWC.Controller;
 
+import javax.print.DocFlavor.INPUT_STREAM;
 import javax.swing.*;
 
 import edu.kmi.primejavaC.JWC.Model.Member;
+import edu.kmi.primejavaC.JWC.View.Form.Insert_Profile_Form;
 
 import java.sql.*;
 
@@ -17,7 +19,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "bitnami";
+    private static final String PW = "wlsdn123";
 
     public FrontController(){
         mb = new Member();
@@ -128,24 +130,23 @@ public class FrontController {
     
     public Member checkUser(String id, String pw) throws SQLException{
     	Member info = new Member();
+    	FrontController control = new FrontController();
     	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
     	PreparedStatement pstmt;
-        int cnt = 0;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
         String test = null;
         while(rs.next()){
         	info.setPw(rs.getString("pw"));
+        	info.setProfilecheck(rs.getInt("profilecheck"));
         }
     	if ( info.getPw().equals(pw)){
-    		
-    		
+    		if ( info.getProfilecheck() == 1){
+    			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
+    		}
     		System.out.println("굿");
     		return info;
-    		
     	}else{
-    		
-    		
     		System.out.println("망함");
     		return null;
     	}
