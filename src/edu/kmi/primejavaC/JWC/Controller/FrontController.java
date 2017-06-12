@@ -133,7 +133,6 @@ public class FrontController {
     	int cnt = 0;
     	FrontController control = new FrontController();
     	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "' AND pw = '" + pw + "'";
-    	int count = 0;
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
@@ -141,7 +140,6 @@ public class FrontController {
         	cnt++;
         	info.setPid(rs.getInt("pid"));
         	info.setId(rs.getString("id"));
-        	count++;
         	info.setPw(rs.getString("pw"));
         	info.setName(rs.getString("name"));
         	info.setAge(rs.getInt("age"));
