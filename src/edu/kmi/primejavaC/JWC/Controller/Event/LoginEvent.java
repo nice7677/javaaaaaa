@@ -37,7 +37,7 @@ public class LoginEvent implements ActionListener {
 		}
 		frame.getControl().close();
 		
-		if(!(info.equals(null))){
+		if(!(info == null)){
 			
 			if(info.getProfilecheck() == 1){
 				frame.dispose();
