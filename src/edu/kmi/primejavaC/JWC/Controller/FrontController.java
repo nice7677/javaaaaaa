@@ -131,14 +131,19 @@ public class FrontController {
     public Member checkUser(String id, String pw) throws SQLException{
     	Member info = new Member();
     	FrontController control = new FrontController();
+    	int count = 0;
     	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
         String test = null;
         while(rs.next()){
+        	count++;
         	info.setPw(rs.getString("pw"));
         	info.setProfilecheck(rs.getInt("profilecheck"));
+        }
+        if( count == 0){
+        	// 여기에 메세지
         }
     	if ( info.getPw().equals(pw)){
     		if ( info.getProfilecheck() == 0){
