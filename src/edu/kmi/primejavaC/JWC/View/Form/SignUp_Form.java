@@ -24,6 +24,7 @@ import com.sun.glass.events.WindowEvent;
 
 import edu.kmi.primejavaC.JWC.Controller.FrontController;
 import edu.kmi.primejavaC.JWC.Controller.Event.IdCheckEvent;
+import edu.kmi.primejavaC.JWC.Controller.Event.SignUpEvent;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -148,16 +149,22 @@ public class SignUp_Form extends Parent_Form{
 					txtPwdChk.setForeground(new Color(255, 0, 0));
 					txtPwdChk.setText("Please enter your password.");
 					Pw_chk = false;
+					btnSignUp.setEnabled(false);
 				}
 				else if(!(pwd.equals(pwd_2))){
 					txtPwdChk.setForeground(new Color(255, 0, 0));
 					txtPwdChk.setText("Passwords do not match.");
 					Pw_chk = false;
+					btnSignUp.setEnabled(false);
 				}
 				else{
 					txtPwdChk.setForeground(new Color(0, 0, 255));
 					txtPwdChk.setText("Password available.");
 					Pw_chk = true;
+					
+					if(Id_chk == true && Pw_chk == true){
+						btnSignUp.setEnabled(true);
+					}
 				}
 			}
 		});
@@ -178,26 +185,42 @@ public class SignUp_Form extends Parent_Form{
 					txtPwdChk.setForeground(new Color(255, 0, 0));
 					txtPwdChk.setText("Please enter your password.");
 					Pw_chk = false;
+					btnSignUp.setEnabled(false);
 				}
 				else if(!(pwd.equals(pwd_2))){
 					txtPwdChk.setForeground(new Color(255, 0, 0));
 					txtPwdChk.setText("Passwords do not match.");
 					Pw_chk = false;
+					btnSignUp.setEnabled(false);
 				}
 				else{
 					txtPwdChk.setForeground(new Color(0, 0, 255));
 					txtPwdChk.setText("Password available.");
 					Pw_chk = true;
+					
+					if(Id_chk == true && Pw_chk == true){
+						btnSignUp.setEnabled(true);
+					}
 				}
 			}
 		});
 			
 			//회원 가입 버튼
-		btnSignUp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnSignUp.addActionListener(new SignUpEvent(this));
 		
 		//--------------이벤트 등록 end----------------------
+		
+		
+	}
+	
+	public void setId_chk(Boolean id_chk) {
+		Id_chk = id_chk;
+	}
+	
+	//입력된 id와 pw를 반환하는 함수
+	//회원 가입 버튼 클릭 시 호출되는 함수  use ( SignUpEvent.class )
+	public String[] join(){
+		String info[] = {new String(txtId.getText()), new String(txtPwd.getPassword(), 0, txtPwd.getPassword().length)};
+		return info;
 	}
 }

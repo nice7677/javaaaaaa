@@ -11,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import edu.kmi.primejavaC.JWC.Controller.FrontController;
-import edu.kmi.primejavaC.JWC.Controller.DAO.MemberDao;
 import edu.kmi.primejavaC.JWC.Controller.Event.LoginEvent;
 
 import java.awt.GridLayout;
