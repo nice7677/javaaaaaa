@@ -23,26 +23,36 @@ public class Member {
     private String myType;
     private String myTypeB;
     private Integer profilecheck;
-
+    
+    
     @Override
-    public String toString() {
-        return "MemberDataAccess{" +
-                "pid=" + pid +
-                ", id='" + id + '\'' +
-                ", pw='" + pw + '\'' +
-                ", name='" + name + '\'' +
-                ", gender='" + gender + '\'' +
-                ", region='" + region + '\'' +
-                ", phone=" + phone +
-                ", intro='" + intro + '\'' +
-                ", bloodT='" + bloodT + '\'' +
-                ", myType='" + myType + '\'' +
-                ", myTypeB='" + myTypeB + '\'' +
-                ", profilecheck=" + profilecheck +
-                '}';
-    }
+	public String toString() {
+		return "Member [pid=" + pid + ", id=" + id + ", pw=" + pw + ", name=" + name + ", age=" + age + ", gender="
+				+ gender + ", region=" + region + ", phone=" + phone + ", intro=" + intro + ", bloodT=" + bloodT
+				+ ", myType=" + myType + ", myTypeB=" + myTypeB + ", profilecheck=" + profilecheck + "]";
+	}
 
-    public Integer getPid() {
+
+	public String typelist() {
+		return "pid=" + pid + ", name=" + name + ", age=" + age + ", gender=" + gender + ", region=" + region
+				+ ", intro=" + intro + "";
+	}
+    
+
+    public Member(Integer pid, String name, Integer age, String gender, String region, String intro) {
+		super();
+		this.pid = pid;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.region = region;
+		this.intro = intro;
+	}
+
+
+
+
+	public Integer getPid() {
         return pid;
     }
 

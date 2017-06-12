@@ -20,7 +20,7 @@ CREATE TABLE memberinfo(
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO memberinfo (id, pw, name, age, gender, region, phone, intro, bloodT, myType, myTypeB)
-    VALUES ('test','test','test',25,'남자','서울',01088387684,'안녕반가워요사랑해요','B','귀여움','B');
+    VALUES ('test5','test','test',25,'남자','서울',01088387684,'안녕반가워요사랑해요','B','귀여움','B');
 
 CREATE TABLE memoservice(
   pid INT NOT NULL AUTO_INCREMENT,

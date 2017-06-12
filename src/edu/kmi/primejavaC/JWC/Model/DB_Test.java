@@ -12,7 +12,8 @@ public class DB_Test {
         FrontController dao = new FrontController();
         //dao.idCheck("tes2t", "testtest");
         dao.open();
-        dao.checkUser("test", "test");
+        //dao.checkUser("test", "test");
+        dao.typelist("남자", "B", "서울");
         dao.close();
         //dao.dataDelete("test");
         //dao.dataProfile("test", "진우짱", 25, "여자", "서울", 1088387684,"안녕하세요반가워요","B","죽어","AB");

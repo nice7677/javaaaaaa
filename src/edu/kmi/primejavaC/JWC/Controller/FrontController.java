@@ -7,6 +7,9 @@ import edu.kmi.primejavaC.JWC.Model.Member;
 import edu.kmi.primejavaC.JWC.View.Form.Insert_Profile_Form;
 
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by JINU on 2017. 6. 8..
@@ -19,7 +22,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "bitnami";
+    private static final String PW = "wlsdn123";
 
     public FrontController(){
         mb = new Member();
@@ -158,6 +161,30 @@ public class FrontController {
         else{
         	return info;
         }
+    }
+    
+    public Member typelist(String gender, String blood, String region) throws SQLException{
+    	Member info = new Member();
+		Map<Integer, Object> list = new HashMap<>();
+    	final String TYPE_LIST = "select * from memberinfo WHERE gender = '" + gender +"' AND bloodT = '" + blood +"' AND region = '" + region +"' order by rand() limit 5";
+    	PreparedStatement pstmt;
+        pstmt = con.prepareStatement(TYPE_LIST);
+        rs = pstmt.executeQuery();
+        int count = 0;
+        while(rs.next()){
+        	info.setPid(rs.getInt("pid"));
+        	info.setName(rs.getString("name"));
+        	info.setAge(rs.getInt("age"));
+        	info.setGender(rs.getString("gender"));
+        	info.setRegion(rs.getString("region"));
+        	info.setIntro(rs.getString("intro"));
+        	list.put(count, info.typelist());
+        	count++;
+        }
+        for (int i = 0; i < 5; i++){
+        	System.out.println(list.get(i));
+        }
+    	return info;
     }
     
     public void close(){
