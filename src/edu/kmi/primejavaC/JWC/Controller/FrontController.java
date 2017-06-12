@@ -144,7 +144,8 @@ public class FrontController {
         }
         if( count == 0){
         	// 여기에 메세지
-        } else if ( info.getPw().equals(pw)){
+        }
+    	if ( info.getPw().equals(pw)){
     		if ( info.getProfilecheck() == 0){
     			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
     		}
@@ -154,7 +155,6 @@ public class FrontController {
     		System.out.println("망함");
     		return null;
     	}
-    	
     }
     
     public void close(){
