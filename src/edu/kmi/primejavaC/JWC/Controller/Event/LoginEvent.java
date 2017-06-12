@@ -50,13 +50,6 @@ public class LoginEvent implements ActionListener {
 		else{
 			JOptionPane.showMessageDialog(null, "ID or Password does not match");
 		}
-		/*if(member.getProfilecheck() == 1){
-			frame.dispose();
-			Main_Form main_frame = new Main_Form(frame.getControl(), info);
-		}
-		else{
-			Insert_Profile_Form insert_form = new Insert_Profile_Form(frame.getControl());
-		}*/
 	}
 
 }

@@ -160,17 +160,6 @@ public class FrontController {
         else{
         	return info;
         }
-    	/*if ( info.getPw().equals(pw)){
-    		if ( info.getProfilecheck() == 0){
-    			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
-    		}
-    		System.out.println("굿");
-    		return info;
-    	}else{
-    		System.out.println("망함");
-    		return null;
-    	}*/
-    	
     }
     
     public void close(){
