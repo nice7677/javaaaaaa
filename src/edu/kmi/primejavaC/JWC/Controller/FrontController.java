@@ -136,7 +136,6 @@ public class FrontController {
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
-        String test = null;
         while(rs.next()){
         	count++;
         	info.setPw(rs.getString("pw"));
@@ -144,17 +143,20 @@ public class FrontController {
         }
         if( count == 0){
         	// 여기에 메세지
-        }
-    	if ( info.getPw().equals(pw)){
-    		if ( info.getProfilecheck() == 0){
-    			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
-    		}
-    		System.out.println("굿");
-    		return info;
-    	}else{
-    		System.out.println("망함");
-    		return null;
-    	}
+        	System.out.println("아이디좀");
+        } else {
+        	if ( info.getPw().equals(pw)){
+        		if ( info.getProfilecheck() == 0){
+        			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
+        		}
+        		System.out.println("굿");		
+        		return info;
+        	}else{
+        		System.out.println("망함");
+        		return null;
+        	}
+        }return info;
+    	
     }
     
     public void close(){
