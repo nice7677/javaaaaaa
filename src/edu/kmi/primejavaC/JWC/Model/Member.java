@@ -14,6 +14,7 @@ public class Member {
     private String id;
     private String pw;
     private String name;
+    private Integer age;
     private String gender;
     private String region;
     private Integer phone;
@@ -73,7 +74,15 @@ public class Member {
         this.name = name;
     }
 
-    public String getGender() {
+    public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getGender() {
         return gender;
     }
 

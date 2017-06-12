@@ -19,7 +19,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "wlsdn123";
+    private static final String PW = "bitnami";
 
     public FrontController(){
         mb = new Member();
@@ -130,17 +130,35 @@ public class FrontController {
     
     public Member checkUser(String id, String pw) throws SQLException{
     	Member info = new Member();
+    	int cnt = 0;
     	FrontController control = new FrontController();
-    	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
+    	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "' AND pw = '" + pw + "'";
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
-        String test = null;
         while(rs.next()){
+        	cnt++;
+        	info.setPid(rs.getInt("pid"));
+        	info.setId(rs.getString("id"));
         	info.setPw(rs.getString("pw"));
+        	info.setName(rs.getString("name"));
+        	info.setAge(rs.getInt("age"));
+        	info.setGender(rs.getString("gender"));
+        	info.setRegion(rs.getString("region"));
+        	info.setPhone(rs.getInt("phone"));
+        	info.setIntro(rs.getString("intro"));
+        	info.setBloodT(rs.getString("bloodT"));
+        	info.setMyType(rs.getString("myType"));
+        	info.setMyTypeB(rs.getString("myTypeB"));
         	info.setProfilecheck(rs.getInt("profilecheck"));
         }
-    	if ( info.getPw().equals(pw)){
+        if(cnt == 0){
+        	return null;
+        }
+        else{
+        	return info;
+        }
+    	/*if ( info.getPw().equals(pw)){
     		if ( info.getProfilecheck() == 0){
     			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
     		}
@@ -149,7 +167,7 @@ public class FrontController {
     	}else{
     		System.out.println("망함");
     		return null;
-    	}
+    	}*/
     }
     
     public void close(){
