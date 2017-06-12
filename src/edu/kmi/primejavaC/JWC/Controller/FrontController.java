@@ -132,14 +132,23 @@ public class FrontController {
     	Member info = new Member();
     	int cnt = 0;
     	FrontController control = new FrontController();
+<<<<<<< HEAD
     	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "' AND pw = '" + pw + "'";
+=======
+    	int count = 0;
+    	final String MEMBER_LOGIN = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
+>>>>>>> 5d1afda8ecd1f5448681e6d85b6bbc5ef707a0ed
     	PreparedStatement pstmt;
         pstmt = con.prepareStatement(MEMBER_LOGIN);
         rs = pstmt.executeQuery();
         while(rs.next()){
+<<<<<<< HEAD
         	cnt++;
         	info.setPid(rs.getInt("pid"));
         	info.setId(rs.getString("id"));
+=======
+        	count++;
+>>>>>>> 5d1afda8ecd1f5448681e6d85b6bbc5ef707a0ed
         	info.setPw(rs.getString("pw"));
         	info.setName(rs.getString("name"));
         	info.setAge(rs.getInt("age"));
@@ -152,6 +161,7 @@ public class FrontController {
         	info.setMyTypeB(rs.getString("myTypeB"));
         	info.setProfilecheck(rs.getInt("profilecheck"));
         }
+<<<<<<< HEAD
         if(cnt == 0){
         	return null;
         }
@@ -168,6 +178,24 @@ public class FrontController {
     		System.out.println("망함");
     		return null;
     	}*/
+=======
+        if( count == 0){
+        	// 여기에 메세지
+        	System.out.println("아이디좀");
+        } else {
+        	if ( info.getPw().equals(pw)){
+        		if ( info.getProfilecheck() == 0){
+        			Insert_Profile_Form ipf = new Insert_Profile_Form(control);
+        		}
+        		System.out.println("굿");		
+        		return info;
+        	}else{
+        		System.out.println("망함");
+        		return null;
+        	}
+        }return info;
+    	
+>>>>>>> 5d1afda8ecd1f5448681e6d85b6bbc5ef707a0ed
     }
     
     public void close(){
