@@ -22,7 +22,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "bitnami";
+    private static final String PW = "wlsdn123";
 
     public FrontController(){
         mb = new Member();
@@ -186,6 +186,26 @@ public class FrontController {
         	System.out.println(list.get(i));
         }
     	return list;
+    }
+    
+    public Member delete(String id, String pw) throws SQLException{
+    	Member info = new Member();
+    	final String USER_CHECK = "SELECT * FROM memberinfo WHERE id = '" + id + "'";
+    	final String USER_DELETE = "DELETE FROM memberinfo WHERE id = '" + id +"' AND pw = '" + pw + "'";
+    	int count = 0;
+    	PreparedStatement pstmt;
+    	pstmt = con.prepareStatement(USER_CHECK);
+        rs = pstmt.executeQuery();
+        while(rs.next()){
+            count++;
+        }
+    	if ( count == 1){
+    		st.execute(USER_DELETE);
+    		System.out.println("아이디삭제");
+    	}else{
+    		System.out.println("아이디업슴");
+    	}
+    	return info;
     }
     
     public void close(){
