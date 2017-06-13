@@ -12,7 +12,7 @@ public class DB_Test {
         FrontController dao = new FrontController();
         //dao.idCheck("tes2t", "testtest");
         dao.open();
-        dao.delete("test2", "test");
+        dao.delete("test23", "123");
         //dao.checkUser("test", "test");
         //dao.typelist("남자", "B", "서울");
         dao.close();

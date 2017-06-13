@@ -198,10 +198,15 @@ public class FrontController {
         rs = pstmt.executeQuery();
         while(rs.next()){
             count++;
+            info.setPw(rs.getString("pw"));
         }
-    	if ( count == 1){
-    		st.execute(USER_DELETE);
-    		System.out.println("아이디삭제");
+    	if ( count == 1){	
+    		if ( info.getPw().equals(pw)){
+    			st.execute(USER_DELETE);
+        		System.out.println("아이디삭제");
+    		}else{
+    			System.out.println("비밀번호 확인");
+    		}
     	}else{
     		System.out.println("아이디업슴");
     	}
