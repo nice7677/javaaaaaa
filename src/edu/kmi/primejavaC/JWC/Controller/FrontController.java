@@ -22,7 +22,7 @@ public class FrontController {
     private Member mb;
     private static final String URL = "jdbc:mysql://localhost:3306/primejavajwc?useUnicode=true&characterEncoding=utf8";
     private static final String ID = "root";
-    private static final String PW = "wlsdn123";
+    private static final String PW = "bitnami";
 
     public FrontController(){
         mb = new Member();
